@@ -1,6 +1,6 @@
 
 <html>
-<title>Toko Indonesia</title>
+<title>Toko Buku</title>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">        </script>
 <script src="typeahead.min.js"></script>
@@ -28,18 +28,18 @@ tr:nth-child(even) {
 <?php
 require_once("config.php");
 
-
+// Latihan SKKNI
 if(isset($_GET['id_barang'])){
 		$brg = $_GET['id_barang'];
 		
-		mysqli_query($db,"DELETE FROM barang WHERE ID_Barang='$brg'");
-		header('location:pagebarang.php');
+		mysqli_query($db,"DELETE FROM table_buku WHERE id_buku='$brg'");
+		header('location:pagebuku.php');
 	}
 if(isset($_GET['id_suplier'])){
 		$brg = $_GET['id_suplier'];
 		
-		mysqli_query($db,"DELETE FROM suplier WHERE ID_Suplier='$brg'");
-		header('location:pagesuplier.php');
+		mysqli_query($db,"DELETE FROM table_penerit WHERE id_penerbit='$brg'");
+		header('location:pagepenerbit.php');
 	}
 	
 ?>

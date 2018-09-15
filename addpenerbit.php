@@ -24,16 +24,16 @@ tr:nth-child(even) {
 <body>
 <center>
 
-	<b>TAMBAH TABLE SUPPLIER</b><br><br>
-
+	<b>TAMBAH TABLE PENERBIT</b><br><br>
+<!- Latihan SKKNI ->
 </center>
 			<form action="" method="post">
 			<tr>
-			<td>ID Suplier : <input type="text" name="id" value=""></td><br>
+			<td>ID Penerbit : <input type="text" name="id" value=""></td><br>
 			<td>Nama : <input type="text" name="name" value=""></td><br>
-			<td>Alamat : <input type="text" name="alamat" value=""></td><br>
+			<td>Negara : <input type="text" name="negara" value=""></td><br>
 			<td>Kota : <input type="text" name="kota" value=""></td><br>
-			<td>Telepon : <input type="text" name="telepon" value=""></td><br>
+			
 			<tr>
 			<input type='submit' name="submit" value='SUBMIT'>
 			<input type='submit' name="cancel" value='CANCEL'>
@@ -44,16 +44,16 @@ tr:nth-child(even) {
 				
 				$id = $_POST['id'];
 				$name = $_POST['name'];
-				$alamat = $_POST['alamat'];
+				$negara = $_POST['negara'];
 				$kota = $_POST['kota'];
-				$telpon = $_POST['telepon'];
 				
-				mysqli_query($db,"INSERT into suplier values ('$id','$name','$alamat','$kota','$telpon')");
 				
-				header('location:pagesuplier.php'); 
+				mysqli_query($db,"INSERT into table_penerit values ('$id','$name','$alamat','$kota')");
+				
+				header('location:pagepenerbit.php'); 
 			}
 			if(isset($_POST['cancel'])){
-				header('location:pagesuplier.php');
+				header('location:pagepenerbit.php');
 			}
 
 				?>

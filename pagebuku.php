@@ -1,5 +1,5 @@
 <html>
-<title>Toko Indonesia</title>
+<title>Toko Buku</title>
 <head>
 
 <style>
@@ -22,22 +22,22 @@ tr:nth-child(even) {
 </head>
 <body>
 <center>
-<form action="pagebarang.php" method="GET">
+<form action="pagebuku.php" method="GET">
 <input type="text" name="brg" />
 <input type="submit" value="Search" />
 </form>
-	<b>DATABASE TABLE BARANG</b><br>
-	<a href="/SKKNI/index.php">HOME </a>
-	<a href="/SKKNI/addbarang.php">TAMBAH BARANG</a><br><br>
-
+	<b>DATABASE TABLE BUKU</b><br>
+	<a href="/SKKNI/index.php">HOME |</a>
+	<a href="/SKKNI/addbuku.php"> +TAMBAH BUKU+ |</a>
+	<a href="/SKKNI/report.php">REPORT</a><br><br>
 
 <?php
 require_once("config.php");
 if(isset($_GET['brg'])){
 		$brg = $_GET['brg'];
-$sql = "SELECT *from Barang where Nama_Barang LIKE '%".$brg."%'";
+$sql = "SELECT *from table_buku where nama LIKE '%".$brg."%'";
 }else{
-		$sql = "SELECT *from Barang";
+		$sql = "SELECT *from table_buku";
 }
 $result = $db->query($sql);
 		if ($result->num_rows > 0) {
@@ -47,20 +47,22 @@ $result = $db->query($sql);
 			echo "<table>";
 			?>
 			<tr>
-			<th>ID Barang</th>
+			<th>ID Buku</th>
 			<th>Kategori</th>
-			<th>Nama Barang</th>
+			<th>Nama Buku</th>
+			<th>Pengarang</th>
 			<th>Harga</th>
 			<th>Stok</th>
-			<th>Supplier</th>
+			<th>Penerbit</th>
 			<th>Setting</th>
+			</tr>
 			
 			</tr>
 			<?php
 			while($row = $result->fetch_assoc()) 
 			{
-				echo "<tr><td>".$row["ID_Barang"]."</td><td>".$row["Kategori"]."</td><td>".$row["Nama_Barang"]."</td><td>".$row["Harga"]."</td><td>".$row["Stok"]."</td><td>".$row["Supplier"]."</td><td><a href='form-edit.php?id_barang=$row[ID_Barang]'>Edit</a>
-                <a href='delete.php?id_barang=$row[ID_Barang]'>Delete</a></td></tr>";
+				echo "<tr><td>".$row["id_buku"]."</td><td>".$row["kategori"]."</td><td>".$row["nama"]."</td><td>".$row["pengarang"]."</td><td>".$row["harga"]."</td><td>".$row["stok"]."</td><td>".$row["penerbit"]."</td><td><a href='form-edit.php?id_barang=$row[id_buku]'>Edit</a>
+                <a href='delete.php?id_barang=$row[id_buku]'>Delete</a></td></tr>";
 			}
 				echo "</table>";
 			}

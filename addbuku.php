@@ -29,17 +29,18 @@ tr:nth-child(even) {
 <center>
 
 	<b>TAMBAH TABLE BARANG</b><br><br>
-
+<!- Latihan SKKNI ->
 </center>
 
 			<form action="" method="post">
 			<tr>
-			<td>ID Barang : <input type="text" name="id" value=""></td><br>
+			<td>ID Buku : <input type="text" name="id" value=""></td><br>
 			<td>Kategori : <input type="text" name="kategori" value=""></td><br>
-			<td>Nama Barang : <input type="text" name="nama" value=""></td><br>
+			<td>Nama Buku : <input type="text" name="nama" value=""></td><br>
+			<td>Pengarang : <input type="text" name="pengarang" value=""></td><br>
 			<td>Harga : <input type="text" name="harga" value=""></td><br>
 			<td>Stok : <input type="text" name="stok" value=""></td><br>
-			<td>Supplier : <input type="text" name="suplier" value=""></td><br>
+			<td>Penerbit : <input type="text" name="penerbit" value=""></td><br>
 			</tr><br>
 			<input type='submit' name='submit' value='submit'>
 			<input type='submit' name="cancel" value='CANCEL'>
@@ -52,16 +53,17 @@ tr:nth-child(even) {
 				$id = $_POST['id'];
 				$kategori = $_POST['kategori'];
 				$nama = $_POST['nama'];
+				$pengarang = $_POST['pengarang'];
 				$harga = $_POST['harga'];
 				$stok = $_POST['stok'];
-				$suplier = $_POST['suplier'];
+				$penerbit = $_POST['penerbit'];
 				
-				mysqli_query($db,"INSERT into barang values ('$id','$kategori','$nama','$harga','$stok','$suplier')");
+				mysqli_query($db,"INSERT into table_buku values ('$id','$kategori','$nama','$pengarang','$harga','$stok','$penerbit')");
 				
-				header('location:pagebarang.php'); 
+				header('location:pagebuku.php'); 
 			}
 			if(isset($_POST['cancel'])){
-				header('location:pagebarang.php');
+				header('location:pagebuku.php');
 			}
 
 				?>

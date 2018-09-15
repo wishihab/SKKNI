@@ -1,14 +1,40 @@
 <?php
 require_once("config.php");
-				
-				$id = $_POST['id'];
-				$name = $_POST['name'];
-				$alamat = $_POST['alamat'];
-				$kota = $_POST['kota'];
-				$telpon = $_POST['telepon'];
-				
-				mysqli_query($db,"UPDATE suplier SET Nama='$name', Alamat='$alamat', Kota='$kota', Telepon='$telpon' WHERE ID_Suplier='$id')");
-				 
+// Latihan SKKNI
+if(isset($_POST['simpanbarang'])){
 			
-			?>
+			$idbarang = $_POST['idbarang'];
+			$kategori = $_POST['kategori'];
+			$nama = $_POST['nama'];
+			$pengarang = $_POST['pengarang'];
+			$harga = $_POST['harga'];
+			$stok = $_POST['stok'];
+			$penerbit = $_POST['penerbit'];
+				
+				mysqli_query($db,"UPDATE table_buku SET kategori='$kategori',
+									nama='$nama',
+									pengarang='$pengarang',
+									harga='$harga',
+									stok='$stok',
+									penerbit='$penerbit'
+									WHERE id_buku='$idbarang'");
+				header('location:pagebuku.php');
+		}
+
+		if(isset($_POST['simpansuplier'])){
 			
+			$id = $_POST['id'];
+			$nama = $_POST['nama'];
+			$negara = $_POST['negara'];
+			$kota = $_POST['kota'];
+			
+				
+				mysqli_query($db,"UPDATE table_penerit SET nama='$nama',
+									negara='$negara',
+									kota='$kota'
+									WHERE id_penerbit='$id'");
+				header('location:pagepenerbit.php');
+		}
+				
+			
+?>	

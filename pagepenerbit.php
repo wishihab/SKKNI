@@ -1,5 +1,5 @@
 <html>
-<title>Toko Indonesia</title>
+<title>Toko Buku</title>
 <head>
 <style>
 table {
@@ -21,13 +21,14 @@ tr:nth-child(even) {
 </head>
 <body>
 <center>
-<form action="pagesuplier.php" method="GET">
+<form action="pagepenerbit.php" method="GET">
         <input type="text" name="brg" />
         <input type="submit" value="Search" />
     </form>
-	<b>DATABASE TABLE SUPPLIER</b><br>
-	<a href="/SKKNI/index.php">HOME </a>
-	<a href="/SKKNI/addsuplier.php">TAMBAH SUPPLIER</a><br><br>
+	<b>DATABASE TABLE PENERBIT</b><br>
+	<a href="/SKKNI/index.php">HOME | </a>
+	<a href="/SKKNI/addpenerbit.php"> +TAMBAH PENERBIT+ |</a>
+	<a href="/SKKNI/reportpenerbit.php">REPORT</a><br><br>
 
 
 <?php
@@ -35,9 +36,9 @@ require_once("config.php");
 
 if(isset($_GET['brg'])){
 		$brg = $_GET['brg'];
-$sql = "SELECT *from Suplier where Nama LIKE '%".$brg."%'";
+$sql = "SELECT *from table_penerit where Nama LIKE '%".$brg."%'";
 }else{
-		$sql = "SELECT *from Suplier";
+		$sql = "SELECT *from table_penerit";
 }
 		
 	$result = $db->query($sql);
@@ -48,18 +49,18 @@ $sql = "SELECT *from Suplier where Nama LIKE '%".$brg."%'";
 			echo "<table>";
 			?>
 			<tr>
-			<th>ID Suplier</th>
-			<th>Nama</th>
-			<th>Alamat</th>
+			<th>ID Penerbit</th>
+			<th>Nama Penerbit</th>
+			<th>Negara</th>
 			<th>Kota</th>
-			<th>Telepon</th>
 			<th>Setting</th>
+			
 			</tr>
 			<?php
 			while($row = $result->fetch_assoc()) 
 			{
-				echo "<tr><td>".$row["ID_Suplier"]."</td><td>".$row["Nama"]."</td><td>".$row["Alamat"]."</td><td>".$row["Kota"]."</td><td>".$row["Telepon"]."</td><td><a href='form-edit.php?id_suplier=$row[ID_Suplier]'>Edit</a>
-                <a href='delete.php?id_suplier=$row[ID_Suplier]'>Delete</a></td></tr>";
+				echo "<tr><td>".$row["id_penerbit"]."</td><td>".$row["nama"]."</td><td>".$row["negara"]."</td><td>".$row["kota"]."</td><td><a href='form-edit.php?id_suplier=$row[id_penerbit]'>Edit</a>
+                <a href='delete.php?id_suplier=$row[id_penerbit]'>Delete</a></td></tr>";
 			}
 				echo "</table>";
 			}

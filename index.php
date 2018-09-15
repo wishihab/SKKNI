@@ -1,5 +1,5 @@
 <html>
-<title>Toko Indonesia</title>
+<title>Toko Buku</title>
 <head>
 <style>
 table {
@@ -20,32 +20,33 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-<center><b>DATABASE TABLE BARANG </b><a href="/SKKNI/pagebarang.php">DISINI</a></center><br><br>
+<center><b>DATABASE TABLE BUKU </b><a href="/SKKNI/pagebuku.php">DISINI</a></center><br><br>
 
 <center>
 <?php
 require_once("config.php");
-$sql = "SELECT *from Barang";
+$sql = "SELECT *from table_buku";
 		
 	$result = $db->query($sql);
 		if ($result->num_rows > 0) {
 			// output data of each row'
-			
+			// Latihan SKKNI
 			
 			echo "<table>";
 			?>
 			<tr>
-			<th>ID Barang</th>
+			<th>ID Buku</th>
 			<th>Kategori</th>
-			<th>Nama Barang</th>
+			<th>Nama Buku</th>
+			<th>Pengarang</th>
 			<th>Harga</th>
 			<th>Stok</th>
-			<th>Supplier</th>
+			<th>Penerbit</th>
 			</tr>
 			<?php
 			while($row = $result->fetch_assoc()) 
 			{
-				echo "<tr><td>".$row["ID_Barang"]."</td><td>".$row["Kategori"]."</td><td>".$row["Nama_Barang"]."</td><td>".$row["Harga"]."</td><td>".$row["Stok"]."</td><td>".$row["Supplier"]."</td></tr>";
+				echo "<tr><td>".$row["id_buku"]."</td><td>".$row["kategori"]."</td><td>".$row["nama"]."</td><td>".$row["pengarang"]."</td><td>".$row["harga"]."</td><td>".$row["stok"]."</td><td>".$row["penerbit"]."</td></tr>";
 			}
 				echo "</table>";
 			}
@@ -53,10 +54,10 @@ $sql = "SELECT *from Barang";
 			echo "There is no result in databases";
 		}
 		?>
-		<br><br><center><b>DATABASE TABLE SUPPLIER </b><a href="/SKKNI/pagesuplier.php">DISINI </a></center><br><br>
+		<br><br><center><b>DATABASE TABLE PENERBIT </b><a href="/SKKNI/pagepenerbit.php">DISINI </a></center><br><br>
 		
 <?php		
-		$sql = "SELECT *from Suplier";
+		$sql = "SELECT *from table_penerit";
 		
 	$result = $db->query($sql);
 		if ($result->num_rows > 0) {
@@ -64,17 +65,16 @@ $sql = "SELECT *from Barang";
 			echo "<table>";
 			?>
 			<tr>
-			<th>ID Suplier</th>
-			<th>Nama</th>
-			<th>Alamat</th>
+			<th>ID Penerbit</th>
+			<th>Nama Penerbit</th>
+			<th>Negara</th>
 			<th>Kota</th>
-			<th>Telepon</th>
-			
+
 			</tr>
 			<?php
 			while($row = $result->fetch_assoc()) 
 			{
-				echo "<tr><td>".$row["ID_Suplier"]."</td><td>".$row["Nama"]."</td><td>".$row["Alamat"]."</td><td>".$row["Kota"]."</td><td>".$row["Telepon"]."</td></tr>";
+				echo "<tr><td>".$row["id_penerbit"]."</td><td>".$row["nama"]."</td><td>".$row["negara"]."</td><td>".$row["kota"]."</td></tr>";
 			}
 				echo "</table>";
 			}
@@ -83,7 +83,6 @@ $sql = "SELECT *from Barang";
 		}
 		?>
 		
-
 			
 </body>
 </html>
